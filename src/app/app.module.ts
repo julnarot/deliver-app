@@ -7,7 +7,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NbThemeModule, NbLayoutModule, NbUserModule} from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HttpClientModule} from "@angular/common/http";
-import {NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy} from "@nebular/auth";
+import {
+  NbAuthJWTToken,
+  NbAuthModule,
+  NbOAuth2AuthStrategy,
+  NbOAuth2ResponseType,
+  NbPasswordAuthStrategy
+} from "@nebular/auth";
 import {HeaderComponentComponent} from './header-component/header-component.component';
 import {AuthGuardService} from "./auth-guard.service";
 
@@ -33,12 +39,15 @@ const formSetting: any = {
     HttpClientModule,
     NbAuthModule.forRoot({
       strategies: [
-        NbPasswordAuthStrategy.setup({
-          name: 'email',
-          token: {
-            class: NbAuthJWTToken,
-            key: 'token',
-          },
+        NbOAuth2AuthStrategy.setup({
+          name: 'auth',
+          clientId: 'MlaYaEfhCjoQJvGJx7rDEruIgafIM6xgA4cfLhAh',
+          clientSecret: 'jqPuQJzlr2KDJPCPjOpWF5NX6ASZy7RbEnNyAG3T2bgAbVHasf8fNahg1w0sYTyOHfFfwGtNlhzghJ7MyDh4nvby9MVxuZjg1bMTsBUIu651PjuiqfHdgQKN2igQoK0F',
+          authorize: {
+            endpoint: '',
+            responseType: NbOAuth2ResponseType.TOKEN,
+            scope: '',
+          }
         }),
       ],
       forms: {

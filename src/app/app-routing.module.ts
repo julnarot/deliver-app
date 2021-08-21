@@ -41,9 +41,14 @@ export const routes: Routes = [
     ],
   }, {
     path: 'pages',
-    canActivate: [AuthGuardService],
+    //canActivate: [AuthGuardService],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
+  }, {
+    path: 'oauth2',
+    // canActivate: [AuthGuardService],
+    loadChildren: () => import('./oauth2/oauth2.module')
+      .then(m => m.Oauth2Module),
   }
 
 ];
