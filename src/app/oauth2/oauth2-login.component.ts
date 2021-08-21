@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NbAuthOAuth2Token, NbAuthResult, NbAuthService} from "@nebular/auth";
+import {Component, OnDestroy} from '@angular/core';
+import {NbAuthResult, NbAuthService} from "@nebular/auth";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 
@@ -39,14 +39,14 @@ export class Oauth2LoginComponent implements OnDestroy {
   }
 
   login() {
-    this.authService.authenticate('google')
+    this.authService.authenticate('iron')
       .pipe(takeUntil(this.destroy$))
       .subscribe((authResult: NbAuthResult) => {
       });
   }
 
   logout() {
-    this.authService.logout('google')
+    this.authService.logout('iron')
       .pipe(takeUntil(this.destroy$))
       .subscribe((authResult: NbAuthResult) => {
       });

@@ -37,6 +37,21 @@ import {NbCardModule, NbLayoutModule} from "@nebular/theme";
             success: '/pages',
           },
         }),
+        NbOAuth2AuthStrategy.setup({
+          name: 'iron',
+          clientId: 'MlaYaEfhCjoQJvGJx7rDEruIgafIM6xgA4cfLhAh',
+          clientSecret: 'jqPuQJzlr2KDJPCPjOpWF5NX6ASZy7RbEnNyAG3T2bgAbVHasf8fNahg1w0sYTyOHfFfwGtNlhzghJ7MyDh4nvby9MVxuZjg1bMTsBUIu651PjuiqfHdgQKN2igQoK0F',
+          authorize: {
+            endpoint: 'http://127.0.0.1:8000/o/authorize/',
+            responseType: NbOAuth2ResponseType.CODE,
+            scope: 'read write',
+            redirectUri: 'http://localhost:4200/oauth2/callback',
+          },
+
+          redirect: {
+            success: '/pages',
+          },
+        }),
       ],
     }),
     NbCardModule,
