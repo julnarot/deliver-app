@@ -6,7 +6,13 @@ import {Oauth2LoginComponent} from './oauth2-login.component';
 import {Oauth2CallbackComponent} from './oauth2-callback.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {NbAuthModule, NbOAuth2AuthStrategy, NbOAuth2ResponseType} from "@nebular/auth";
+import {
+  NbAuthModule,
+  NbAuthOAuth2Token,
+  NbOAuth2AuthStrategy,
+  NbOAuth2GrantType,
+  NbOAuth2ResponseType
+} from "@nebular/auth";
 import {NbCardModule, NbLayoutModule} from "@nebular/theme";
 
 
@@ -39,13 +45,19 @@ import {NbCardModule, NbLayoutModule} from "@nebular/theme";
         }),
         NbOAuth2AuthStrategy.setup({
           name: 'iron',
-          clientId: 'MlaYaEfhCjoQJvGJx7rDEruIgafIM6xgA4cfLhAh',
-          clientSecret: 'jqPuQJzlr2KDJPCPjOpWF5NX6ASZy7RbEnNyAG3T2bgAbVHasf8fNahg1w0sYTyOHfFfwGtNlhzghJ7MyDh4nvby9MVxuZjg1bMTsBUIu651PjuiqfHdgQKN2igQoK0F',
+          baseEndpoint: 'http://127.0.0.1:8000/o/',
+          clientId: "MlaYaEfhCjoQJvGJx7rDEruIgafIM6xgA4cfLhAh",
+          clientSecret: "jqPuQJzlr2KDJPCPjOpWF5NX6ASZy7RbEnNyAG3T2bgAbVHasf8fNahg1w0sYTyOHfFfwGtNlhzghJ7MyDh4nvby9MVxuZjg1bMTsBUIu651PjuiqfHdgQKN2igQoK0F",
           authorize: {
-            endpoint: 'http://127.0.0.1:8000/o/authorize/',
+            // endpoint: 'http://127.0.0.1:8000/o/authorize/',
             responseType: NbOAuth2ResponseType.CODE,
             scope: 'read write',
             redirectUri: 'http://localhost:4200/oauth2/callback',
+          }, token: {
+            endpoint: 'token/',
+            // grantType: NbOAuth2GrantType.AUTHORIZATION_CODE,
+            // requireValidToken: true,
+            class: NbAuthOAuth2Token,
           },
 
           redirect: {
