@@ -23,7 +23,7 @@ import {takeUntil} from "rxjs/operators";
 })
 export class Oauth2LoginComponent implements OnDestroy {
 
-  token: any = null;
+  token: any = null; // NbAuthOAuth2Token
 
   private destroy$ = new Subject<void>();
 
