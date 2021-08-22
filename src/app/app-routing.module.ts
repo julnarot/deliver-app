@@ -8,9 +8,10 @@ import {
   NbRequestPasswordComponent, NbResetPasswordComponent
 } from "@nebular/auth";
 import {AuthGuardService} from "./auth-guard.service";
+import {AppComponent} from "./app.component";
 
 export const routes: Routes = [
-  {
+  /*{
     path: 'auth',
     component: NbAuthComponent,
     children: [
@@ -39,9 +40,10 @@ export const routes: Routes = [
         component: NbResetPasswordComponent,
       },
     ],
-  }, {
+  }, */
+  {
     path: 'pages',
-    //canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   }, {
@@ -49,8 +51,11 @@ export const routes: Routes = [
     // canActivate: [AuthGuardService],
     loadChildren: () => import('./oauth2/oauth2.module')
       .then(m => m.Oauth2Module),
+  }, {
+    path: '',
+    redirectTo: 'pages',
+    pathMatch: 'full'
   }
-
 ];
 
 @NgModule({

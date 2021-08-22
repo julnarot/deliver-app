@@ -13,7 +13,8 @@ import {
   NbOAuth2GrantType,
   NbOAuth2ResponseType
 } from "@nebular/auth";
-import {NbCardModule, NbLayoutModule} from "@nebular/theme";
+import {NbButtonModule, NbCardModule, NbLayoutModule} from "@nebular/theme";
+import {AuthGuardService} from "../auth-guard.service";
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import {NbCardModule, NbLayoutModule} from "@nebular/theme";
 
     NbAuthModule.forRoot({
       strategies: [
-        NbOAuth2AuthStrategy.setup({
+        /*NbOAuth2AuthStrategy.setup({
           name: 'google',
           clientId: '614871923849-q19aj577124qi1ipva5fi89l20v8r7ef.apps.googleusercontent.com',
           clientSecret: 'pVfJgi2DU_Au5-J09zaz5L3pQQ',
@@ -42,12 +43,12 @@ import {NbCardModule, NbLayoutModule} from "@nebular/theme";
           redirect: {
             success: '/pages',
           },
-        }),
+        }),*/
         NbOAuth2AuthStrategy.setup({
           name: 'iron',
           baseEndpoint: 'http://127.0.0.1:8000/o/',
-          clientId: "MlaYaEfhCjoQJvGJx7rDEruIgafIM6xgA4cfLhAh",
-          clientSecret: "jqPuQJzlr2KDJPCPjOpWF5NX6ASZy7RbEnNyAG3T2bgAbVHasf8fNahg1w0sYTyOHfFfwGtNlhzghJ7MyDh4nvby9MVxuZjg1bMTsBUIu651PjuiqfHdgQKN2igQoK0F",
+          clientId: "kYLNG8SZzw6aTclbSwNgsvcQdiltjmos9fgmDvxF",
+          clientSecret: "cnfnLMfofgMWewqzyUjy6LVYwrIo09bs814hrYmcARUsb2Zi74J8GmZbqBr2T4cIuIf8qiGrJq8dKdTmvw6KMry58g83JMsKWrtpTcOayYQSSKUc9YRu0iYfmkjbZoEp",
           authorize: {
             // endpoint: 'http://127.0.0.1:8000/o/authorize/',
             responseType: NbOAuth2ResponseType.CODE,
@@ -69,7 +70,11 @@ import {NbCardModule, NbLayoutModule} from "@nebular/theme";
     NbCardModule,
     NbLayoutModule,
     Oauth2RoutingModule,
+    NbButtonModule,
   ],
+  providers: [
+    // AuthGuardService,
+  ]
 })
 export class Oauth2Module {
 }
