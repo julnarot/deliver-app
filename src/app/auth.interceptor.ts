@@ -6,16 +6,11 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {NbAuthService} from "@nebular/auth";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  _token = 'joaiwefsd';
 
-  constructor(private authService: NbAuthService) {
-    this.authService.getToken().toPromise().then((r: any) => {
-      this._token = r.token.access_token;
-    })
+  constructor() {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -23,11 +18,18 @@ export class AuthInterceptor implements HttpInterceptor {
       setHeaders: {
         // 'Content-Type': 'application/json; charset=utf-8',
         // 'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this._token}`,
-        // 'Content-Type': 'application/json',
-        authorization: `Bearer ${this._token}`
+        authorization: `Bearer ${this.getTokenValue()}`
       },
     });
     return next.handle(request);
+  }
+
+  getTokenValue(): any {
+    const disk: any = localStorage.getItem("auth_app_token");
+    if (disk) {
+      return JSON.parse(JSON.parse(disk)['value'])['access_token']
+    } else {
+      return '';
+    }
   }
 }

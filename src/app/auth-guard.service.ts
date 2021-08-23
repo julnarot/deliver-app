@@ -18,8 +18,7 @@ export class AuthGuardService implements CanActivate {
       .pipe(
         tap(autenticated => {
           if (!autenticated) {
-            console.log('is auttenticated?¡??', autenticated)
-            this.router.navigate(['auth/login']).then()
+            this.router.navigate(['oauth2']).then()
           }
         })
       );

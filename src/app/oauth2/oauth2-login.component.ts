@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {NbAuthResult, NbAuthService} from "@nebular/auth";
+import {NbAuthService} from "@nebular/auth";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 
@@ -12,7 +12,7 @@ import {takeUntil} from "rxjs/operators";
           <nb-card-body>
             <p>Current User Authenticated: {{ !!token }}</p>
             <p>Current User Token: {{ token|json }}</p>
-            <button nbButton status="success" *ngIf="!token" (click)="login()">Sign In with Google</button>
+            <button nbButton status="success" *ngIf="!token" (click)="login()">Sign In</button>
             <button nbButton status="warning" *ngIf="token" (click)="logout()">Sign Out</button>
           </nb-card-body>
         </nb-card>
@@ -41,14 +41,14 @@ export class Oauth2LoginComponent implements OnDestroy {
   login() {
     this.authService.authenticate('iron')
       .pipe(takeUntil(this.destroy$))
-      .subscribe((authResult: NbAuthResult) => {
+      .subscribe(() => {
       });
   }
 
   logout() {
     this.authService.logout('iron')
       .pipe(takeUntil(this.destroy$))
-      .subscribe((authResult: NbAuthResult) => {
+      .subscribe(() => {
       });
   }
 

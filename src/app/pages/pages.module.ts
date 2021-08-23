@@ -6,7 +6,7 @@ import {AuthGuardService} from "../auth-guard.service";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
 import {HttpClientModule} from "@angular/common/http";
 import {Oauth2RoutingModule} from "../oauth2/oauth2-routing.module";
-import {NbAuthService, NbTokenService, NbTokenStorage} from "@nebular/auth";
+import {NbAuthService, NbOAuth2AuthStrategy, NbTokenService} from "@nebular/auth";
 import {NbCardModule, NbUserModule} from "@nebular/theme";
 
 
@@ -26,10 +26,11 @@ import {NbCardModule, NbUserModule} from "@nebular/theme";
     NbCardModule
   ],
   providers: [
-    // AuthGuardService,
-    // NbOAuth2AuthStrategy
-    // NbAuthService,
-    // NbTokenService
+    NbAuthService,
+    AuthGuardService,
+    NbOAuth2AuthStrategy,
+    NbAuthService,
+    NbTokenService
 
   ]
 })
