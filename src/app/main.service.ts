@@ -7,7 +7,6 @@ import {map} from "rxjs/operators";
 })
 export class MainService {
 
-
   constructor(private httpClient: HttpClient) {
   }
 
@@ -16,11 +15,23 @@ export class MainService {
   }
 
   getOrders$() {
-    return this.httpClient.get<any>('http://localhost:5000/orders').pipe(map((m: any) => m.data))
+    return this.httpClient.get<any>('http://localhost:5000/orders')
+      .pipe(map((m: any) => m.data))
   }
 
   addOrder$(body: any) {
-    return this.httpClient.post<any>('http://localhost:5000/order', body).pipe(map((m: any) => m.data))
+    return this.httpClient.post<any>('http://localhost:5000/orders', body)
+      .pipe(map((m: any) => m.data))
+  }
+
+  updateOrder$(code: string, body: any) {
+    return this.httpClient.put<any>('http://localhost:5000/order/' + code, body)
+      .pipe(map((m: any) => m.data))
+  }
+
+  deleteOrder(code: any) {
+    return this.httpClient.delete<any>('http://localhost:5000/order/' + code)
+      // .pipe(map((m: any) => m.data))
   }
 
 }

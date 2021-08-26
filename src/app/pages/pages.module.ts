@@ -7,7 +7,15 @@ import {NbEvaIconsModule} from "@nebular/eva-icons";
 import {HttpClientModule} from "@angular/common/http";
 import {Oauth2RoutingModule} from "../oauth2/oauth2-routing.module";
 import {NbAuthService, NbOAuth2AuthStrategy, NbTokenService} from "@nebular/auth";
-import {NbButtonModule, NbCardModule, NbUserModule} from "@nebular/theme";
+import {
+  NbBadgeModule,
+  NbButtonModule,
+  NbCardModule, NbIconModule,
+  NbInputModule, NbListModule,
+  NbSpinnerModule,
+  NbToastrModule,
+  NbUserModule
+} from "@nebular/theme";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
@@ -28,6 +36,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     NbButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    NbInputModule,
+    NbToastrModule.forRoot(),
+    NbSpinnerModule,
+    NbIconModule,
+    NbListModule,
+    NbBadgeModule,
   ],
   providers: [
     NbAuthService,

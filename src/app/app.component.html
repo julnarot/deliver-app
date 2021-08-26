@@ -1,7 +1,7 @@
 <nb-layout>
 
 
-    <nb-layout-header fixed *ngIf="isAutenticated">
+    <nb-layout-header fixed *ngIf="isAutenticated" class="d-flex justify-content-end">
       <nb-actions size="medium">
         <nb-action icon="person-outline" routerLink="oauth2"></nb-action>
         <nb-action icon="power-outline" (click)="logout()"></nb-action>

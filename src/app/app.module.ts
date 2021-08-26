@@ -16,6 +16,9 @@ import {
 } from "@nebular/auth";
 import {NbEvaIconsModule} from "@nebular/eva-icons";
 
+const C_ID = "kYLNG8SZzw6aTclbSwNgsvcQdiltjmos9fgmDvxF";
+const C_SECRET = "cnfnLMfofgMWewqzyUjy6LVYwrIo09bs814hrYmcARUsb2Zi74J8GmZbqBr2T4cIuIf8qiGrJq8dKdTmvw6KMry58g83JMsKWrtpTcOayYQSSKUc9YRu0iYfmkjbZoEp";
+
 @NgModule({
   declarations: [
     AppComponent
@@ -31,26 +34,11 @@ import {NbEvaIconsModule} from "@nebular/eva-icons";
 
     NbAuthModule.forRoot({
       strategies: [
-        /*NbOAuth2AuthStrategy.setup({
-          name: 'google',
-          clientId: '614871923849-q19aj577124qi1ipva5fi89l20v8r7ef.apps.googleusercontent.com',
-          clientSecret: 'pVfJgi2DU_Au5-J09zaz5L3pQQ',
-          authorize: {
-            endpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
-            responseType: NbOAuth2ResponseType.TOKEN,
-            scope: 'https://www.googleapis.com/auth/userinfo.profile',
-            redirectUri: 'http://localhost:4200/oauth2/callback',
-          },
-
-          redirect: {
-            success: '/pages',
-          },
-        }),*/
         NbOAuth2AuthStrategy.setup({
           name: 'iron',
           baseEndpoint: 'http://127.0.0.1:8000/o/',
-          clientId: "kYLNG8SZzw6aTclbSwNgsvcQdiltjmos9fgmDvxF",
-          clientSecret: "cnfnLMfofgMWewqzyUjy6LVYwrIo09bs814hrYmcARUsb2Zi74J8GmZbqBr2T4cIuIf8qiGrJq8dKdTmvw6KMry58g83JMsKWrtpTcOayYQSSKUc9YRu0iYfmkjbZoEp",
+          clientId: C_ID,
+          clientSecret: C_SECRET,
           authorize: {
             // endpoint: 'http://127.0.0.1:8000/o/authorize/',
             responseType: NbOAuth2ResponseType.CODE,
