@@ -19,7 +19,8 @@ import {NbToastrService} from "@nebular/theme";
         <div class="row ">
           <div class="col-md-7 " [nbSpinner]="listLoader">
             <nb-card class="m-0" [size]="orders && orders.length > 5  ? 'small': ''">
-              <nb-card-header>Pedidos</nb-card-header>
+              <nb-card-header class="d-flex justify-content-between">Pedidos
+              <nb-icon icon="refresh-outline" (click)="getOrders()"></nb-icon></nb-card-header>
               <nb-card-body class="p-0">
                 <nb-badge text="{{orders.length}}" status="info" *ngIf="orders.length > 0"></nb-badge>
                 <nb-list *ngIf="orders && orders.length>0; else notFound">
@@ -97,7 +98,14 @@ export class PagesComponent implements OnInit {
       .then(o => {
         this.orders = o
         this.listLoader = false;
-      }, () => this.listLoader = false);
+      }, err => {
+        this.listLoader = false;
+        const loq: any = Object.assign({}, {position: 'top-right', status: 'danger'})
+        this.toastrService.show(
+          `${err}`,
+          'Error',
+          loq);
+      });
   }
 
   onAction() {
