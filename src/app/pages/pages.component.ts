@@ -94,7 +94,7 @@ export class PagesComponent implements OnInit {
 
   getOrders() {
     this.listLoader = true;
-    this.service.getOrders$().toPromise()
+    this.service.getOrders$({status: 2}).toPromise()
       .then(o => {
         this.orders = o
         this.listLoader = false;

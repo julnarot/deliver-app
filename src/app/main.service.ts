@@ -14,8 +14,8 @@ export class MainService {
     return this.httpClient.get<any[]>('http://localhost:8000/users')
   }
 
-  getOrders$() {
-    return this.httpClient.get<any>('http://localhost:5000/orders')
+  getOrders$(params: any) {
+    return this.httpClient.get<any>('http://localhost:5000/orders',{params})
       .pipe(map((m: any) => m.data))
   }
 
